@@ -1,5 +1,6 @@
 package com.redilexapps.ndrawerbaseasaide;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -15,12 +16,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import static com.redilexapps.ndrawerbaseasaide.R.id.drawer_layout;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, fragment_gallery.OnFragmentInteractionListener,
-        fragment_slideshow.OnFragmentInteractionListener {
+        fragment_slideshow.OnFragmentInteractionListener, View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,9 +90,13 @@ public class MainActivity extends AppCompatActivity
         boolean FragmentTransaction = false;
         Fragment fragment = null;
 
-        if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_home) {
             // Handle the gallery action
             fragment = new fragment_gallery();
+            FragmentTransaction = true;
+        } else if (id == R.id.nav_gallery) {
+            // Handle the slideshow action
+            fragment = new fragment_slideshow();
             FragmentTransaction = true;
         } else if (id == R.id.nav_slideshow) {
             // Handle the slideshow action
@@ -124,6 +130,30 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public
+    void onClick(View view) {
+
+        Button button;
+            // Get the view from content_main.xml
+            setContentView(R.layout.content_main);
+
+            // Locate the button in activity_main.xml
+            button = findViewById(R.id.button2);
+
+            // Capture button clicks
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View arg0) {
+
+                    // Start NewActivity.class
+                    Intent myIntent = new Intent(MainActivity.this,
+                            fragment_gallery.class);
+                    startActivity(myIntent);
+                }
+            });
 
     }
 }
