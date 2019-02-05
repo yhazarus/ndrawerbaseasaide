@@ -13,14 +13,4 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|left"
-        android:onClick="onClick"
-        android:layout_marginStart="15dp"
-        android:text="Galería de imágenes" />
-
 </RelativeLayout>

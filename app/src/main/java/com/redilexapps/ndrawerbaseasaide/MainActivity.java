@@ -1,6 +1,5 @@
 package com.redilexapps.ndrawerbaseasaide;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,13 +16,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.view.View.OnClickListener;
 
 import static com.redilexapps.ndrawerbaseasaide.R.id.drawer_layout;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, fragment_gallery.OnFragmentInteractionListener,
-        fragment_slideshow.OnFragmentInteractionListener, View.OnClickListener {
+        implements NavigationView.OnNavigationItemSelectedListener,fragment_home.OnFragmentInteractionListener,fragment_gallery.OnFragmentInteractionListener,
+        fragment_slideshow.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +33,11 @@ public class MainActivity extends AppCompatActivity
 
       // Agrega fragmento para carga inicial
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.container,new fragment_home()).commit();
+        fragmentManager.beginTransaction().replace(R.id.content_main ,new fragment_home()).commit();
         // Agrega fragmento para carga inicial
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -98,7 +97,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the gallery action
-            fragment = new fragment_gallery();
+            fragment = new fragment_home();
             FragmentTransaction = true;
         } else if (id == R.id.nav_gallery) {
             // Handle the slideshow action
@@ -136,30 +135,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
-    }
-
-    @Override
-    public
-    void onClick(View view) {
-
-        Button button;
-            // Get the view from content_main.xml
-            setContentView(R.layout.content_main);
-
-            // Locate the button in activity_main.xml
-            button = findViewById(R.id.button2);
-
-            // Capture button clicks
-            button.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View arg0) {
-
-                    // Start NewActivity.class
-                    Intent myIntent = new Intent(MainActivity.this,
-                            fragment_gallery.class);
-                    startActivity(myIntent);
-                }
-            });
 
     }
 }

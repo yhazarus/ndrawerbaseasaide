@@ -113,5 +113,6 @@ class fragment_home extends Fragment {
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
-    }
+
+        }
 }
